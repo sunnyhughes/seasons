@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Seasons Photo Gallery</title>
+  <meta name="author" content="Sunshine Hughes">
+  <meta name="description" content="A grown up account of being a teenage mother. A declaration of family love through writings, pictures, & video.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="png" href="/Pictures for project/faviconseasons.png">
+
+  <style>
+    * {
+    box-sizing: border-box;
+  }
+  
+   body {
+    display: contents;
+    font-family: Arial;
+}
+  header {
+      display:block;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 100px;
+      background-color: purple;
+  } 
+   h1 {
+      display: block;
+      text-align: center;
+      flex-wrap: wrap;
+      color: white;
+      line-height: 100px;
+      margin: 0;
+   }
+    
+   footer {
+    display: flex;
+    align-content: center;
+    margin: 5px;
+    padding: 5px;
+}
+*/
+
+/* these are the navigation settings*/
+
+  nav {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content:stretch;
+    border: 5px solid gold;
+    padding:5px;
+    margin: 5px;
+    list-style-type: none;
+ }
+
+
+button #hamburgerBtn {
+  background: none;
+  border: none;
+  color:#fff;
+  font-size: 2.4rem;
+  cursor: pointer;
+  padding:0 30px 0 30px;
+}
+
+.hamburgerBtn {
+  color:transparent white;
+  font-size: 2.4rem;
+  cursor:pointer;
+  padding: 0 30px 0 2vw;
+}
+ 
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color:gold;
+  color: white;
+}
+
+
+
+  .div {
+    display: block;
+    flex-direction: column;
+    align-content:space-around;
+  }
+
+  figure {
+      display: block;
+      flex-direction:column;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+
+  }
+
+  div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: 375px;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  
+  .responsive {
+    padding: 0 6px;
+    margin: 5px 0 5px 0;
+    float: left;
+    width: 24.99999%;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  /* this is for the photo wall only */
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 32px;
+    margin: 20px;
+  }
+  
+  .row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  nav {
+      display: block;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content:stretch;
+      border: 5px solid gold;
+      padding:10px;
+      margin: 10px;
+      list-style-type: none;
+  }
+  
+  .topnav {
+      overflow: hidden;
+      background-color: #333;
+      position: relative;
+    }
+    
+    .topnav #myLinks {
+      display: none;
+    }
+    
+    .topnav a {
+      color: white;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      display: block;
+    }
+    
+    .topnav a.icon {
+      background: black;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    .topnav a:hover {
+      background-color: #ddd;
+    /* color: black;*/
+    }
+    
+    .active {
+      background-color: lightsteelblue;
+      color: white;
+    }
+  
+  /* Create 3 equal columns that sits next to each other */
+  .column {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .btn:hover {
+    background-color: #ddd;
+  }
+  
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+  </style>
+</head> 
+
+<body>
+  
+
+  <div class="header" id="myHeader">
+    <h1>Sunshine's Image Gallery</h1>
+    <p>Welcome to my image gallery. Press a number to change the layout.<br> Press here to go <a href="index.html">Home</a></p>
+    <button class="btn" onclick="one()">1</button>
+    <button class="btn" onclick="two()">2</button>
+    <button class="btn" onclick="four()">4</button>
+
+</div>
+
+
+    <!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="/Pictures for project/cheesenbean.png" style="width:100%">
+    <img src="/Pictures for project/myboys.jpg" style="width:100%">
+    <img src="/Pictures for project/mamazoome.jpg" style="width:100%">
+    <img src="/pictures updated/meandmymama.jpg" style="width:100%">
+    <img src="/pictures updated/bigboyparty.jpg" style="width:100%">
+    <img src="/pictures updated/gabbie.jpg" style="width:100%">
+    <img src="/pictures updated/coree.jpg" style="width:100%">
+  </div>
+
+  <div class="column">
+     <img src="/pictures updated/mepoohtudrew.jpg" style="width:100%">
+     <img src="/pictures updated/meandboys2.jpg" style="width:100%">
+    <img src="/pictures updated/meandmymama.jpg" style="width:100%">
+    <img src="/Pictures for project/twuanandmamas.jpg" style="width:100%">
+    <img src="/pictures updated/gabbie.jpg" style="width:100%">
+    <img src="/Pictures for project/cheesenbean.png" style="width:100%">
+  </div>  
+
+  <div class="column">
+    <img src="/pictures updated/poohtuandbean.jpg" style="width:100%">
+    <img src="/pictures updated/meandboys2.jpg" style="width:100%">
+   <img src="/pictures updated/pinkandrandy.jpg" style="width:100%">
+   <img src="/pictures updated/prettygirls.jpg" style="width:100%">
+   <img src="/pictures updated/facee.jpg" style="width:100%">
+   <img src="/pictures updated/megundept.jpg" style="width:100%">
+   <img src="/pictures updated/meandpink.jpg" style="width:100%">
+ </div>  
+
+  <div class="column">
+    
+    <img src="/pictures updated/meandmymama.jpg" style="width:100%">
+    <img src="/pictures updated/montandtruck.png" style="width:100%">
+    <img src="/Pictures for project/biggirlpinkdress.jpg" style="width:100%">
+    <img src="/Pictures for project/twuanandmamas.jpg" style="width:100%">
+    <img src="/pictures updated/beansmiling.jpg" style="width:100%">
+    <img src="/pictures updated/drewandmamas.jpg" style="width: 100%;">
+    <img src="/Pictures for project/mamazoome.png" style="width:100%">
+  </div>
+
+
+    <div class="footer">
+      <p>
+        Seasons of the Sun- Louisville KY |<small>&copy; 2021- Sunshine Hughes</small>
+      </p>
+    </footer>
+    </div>
+    
+    <script src="/javascript.js/photo.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
