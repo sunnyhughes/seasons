@@ -85,6 +85,32 @@ p {
     font-size: 20px;
 }
 
+.float-image1 {
+    float: right; /* or left depending on preference */
+    margin: 0 0 1rem 1rem; /* Adds space between image and text */
+    max-width: 50%; /* Control image size */
+    height: auto;
+  }
+
+  .float-image2 {
+    float: left; /* or left depending on preference */
+    margin: 1rem 1rem 0 0; /* Adds space between image and text */
+    max-width: 50%; /* Control image size */
+    height: auto;
+  }
+
+  .float-image3 {
+    float: right; /* or left depending on preference */
+    margin: 0 0 1rem 1rem; /* Adds space between image and text */
+    max-width: 50%; /* Control image size */
+    height: auto;
+  }
+
+.image-set {
+    display: flex;
+    justify-content: space-between;
+}
+
 .sidebar {
     flex: 1;
     background-color: #e8f4e1;
@@ -118,7 +144,6 @@ footer small {
 
 
 
-
   @media only screen and (max-width: 500px) {
   
     .responsive {
@@ -144,5 +169,14 @@ footer small {
   
         .content-container {
           flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .float-image {
+          float: none;
+          display: block;
+          margin: 0 auto 1rem auto;
+          max-width: 100%;
         }
       }
