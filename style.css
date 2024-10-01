@@ -22,41 +22,45 @@ header h1  {
     font-size: 2rem;
 }
 
-.navbar {
+.topnav {
     position: sticky;
     top: 0;
+    width: 100%;
     background-color: #d5e3f0;
-    text-align: center;
-    font-size: 1rem;
-    padding: 0.5rem 0;
+    overflow: hidden;
+    z-index: 1000;
 }
 
-.navbar ul {
+.topnav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
     padding: 0;
+    margin: 0;
+    gap: 1.5rem;
 }
   
-.navbar ul li {    
+.topnav ul li {    
     padding: 10px; 
 }
     
-.navbar ul li a {
+.topnav ul li a {
     text-decoration: none;
+    color: #333 ;
 }
 
-.navbar ul li a:hover {
+.topnav ul li a:hover {
       color: rgb(187, 133, 133);
 }
-    
-  
+
+.topnav .icon {
+  display: none;
+}
+
 main {
     display: flex;
     flex-direction: column;
-    padding: 50px 75px;
-    margin: 10px;
+    padding: 40px 55px;
 }
 
 h2 {
@@ -72,8 +76,7 @@ h3 {
 
 .content-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .content {
@@ -84,6 +87,8 @@ p {
     padding: 10px;
     font-size: 20px;
 }
+
+/* These are the float images. The ones who are in between paragraphs on several pages */
 
 .float-image1 {
     float: right; /* or left depending on preference */
@@ -110,6 +115,21 @@ p {
     display: flex;
     justify-content: space-between;
 }
+
+
+/* These are the images that are next to each other. */
+
+.childhood-gallery {
+  display: flex;
+  justify-content: center;
+}
+
+.childhood-gallery img {
+  width: 350px;
+  height: 350px;
+  padding: 10px;
+}
+
 
 .sidebar {
     flex: 1;
@@ -144,39 +164,95 @@ footer small {
 
 
 
-  @media only screen and (max-width: 500px) {
-  
-    .responsive {
-      display: flex;
-      width: 100%;
+  /* Responsive Styles */
+
+
+  @media screen and (max-width: 600px) {
+    .topnav ul {
+      display: none;
+      flex-direction: column;
+    }
+
+    .topnav a.icon {
+      display: block;
+      float: right;
       
     }
-  }
   
-  @media only screen and (max-width: 700px) {
-    .responsive {
-      width: 50%;
-      margin: 6px 0;
+    .topnav.responsive ul {
+    display: flex;
+    }
+
+    .topnav.responsive ul li {
+      float: none;
+      text-align: left;
     }
   }
-  
 
-      /* Responsive Styles */
-      @media (max-width: 768px) {
-        nav ul {
-          flex-direction: column;
-        }
-  
-        .content-container {
-          flex-direction: column;
-        }
-      }
 
-      @media (max-width: 768px) {
-        .float-image {
-          float: none;
-          display: block;
-          margin: 0 auto 1rem auto;
-          max-width: 100%;
-        }
-      }
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .topnav ul {
+      flex-direction: row;
+      gap: 1rem; /* Adjust spacing for tablet-sized screens */
+  }
+  .topnav ul li {
+      padding: 5px; /* Reduce padding for better fit */
+  }
+}
+
+@media (max-width: 768px) {
+  header h1  {
+    color: rgb(214, 179, 4);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+  .topnav ul li {
+    font-size: 1rem;
+    padding: 2px;
+  }
+
+  h2 {
+    margin: 5px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.content-container {
+    flex-direction: column;
+
+    }
+
+p {
+  padding: 8px;
+  font-size: 18px;
+}
+
+.float-image {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 100%;
+  }
+}  
+
+
+/* @media only screen and (max-width: 500px) {
+  
+  .responsive {
+    display: flex;
+    width: 100%;
+  }
+}
+  
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 50%;
+    margin: 6px 0;
+  }
+}
