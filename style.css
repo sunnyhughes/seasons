@@ -85,7 +85,7 @@ h3 {
 
 p {
     padding: 10px;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 /* These are the float images. The ones who are in between paragraphs on several pages */
@@ -298,7 +298,4 @@ footer small {
     font-size: 1.3rem;
   }
 
-  p {
-    font-size: 1.1rem;
-  }
 }
