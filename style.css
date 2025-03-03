@@ -118,17 +118,32 @@ p {
 
 /* These are the images that are next to each other. */
 
-.childhood-gallery {
+.childhood-gallery, .childhood-gallery-2 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.childhood-gallery img {
+.childhood-gallery img, .childhood-gallery-2 img {
   width: 350px;
   height: 350px;
   padding: 10px;
 }
+
+
+        /* Hover-Enlarge Gallery */
+        .hover-gallery {
+          display: flex;
+          gap: 10px;
+      }
+      .hover-gallery img {
+          width: 200px;
+          height: 150px;
+          transition: transform 0.3s ease;
+      }
+      .hover-gallery img:hover {
+          transform: scale(1.1);
+      }
 
 
 .sidebar {
