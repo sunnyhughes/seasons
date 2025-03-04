@@ -8,4 +8,12 @@ function myFunction() {
     }
   }
   
-  
+        // Auto-Transitioning Gallery Logic
+        let index = 0;
+        function slideShow() {
+            const slideshow = document.getElementById("slideshow");
+            index = (index + 1) % 2; // Alternates between 0 and 1
+            slideshow.style.transform = `translateX(-${index * 100}%)`;
+        }
+        setInterval(slideShow, 7000); // Changes every 7 seconds
+    
