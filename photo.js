@@ -7,60 +7,115 @@ function myFunction() {
       x.className = "topnav";
     }
   }
-  
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Manual Slideshow
-    function manualSlideGallery(galleryClass, direction) {
-        let slides = document.querySelectorAll(`.${galleryClass}`);
-        let currentIndex = 0;
-
-        slides.forEach((slide, index) => {
-            if (slide.style.display !== "none") {
-                currentIndex = index;
-            }
-            slide.style.display = "none";
-        });
-
-        let nextIndex = (currentIndex + direction + slides.length) % slides.length;
-        slides[nextIndex].style.display = "block";
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
+    if (!gallery || !lightbox) {
+        return; // Nothing to enhance on this page
     }
 
-    document.querySelectorAll(".prev").forEach((btn, index) => {
-        btn.addEventListener("click", () => manualSlideGallery(`slide-${index + 1}`, -1));
-    });
+    const shots = Array.from(gallery.querySelectorAll(".shot"));
+    const lbImage = document.getElementById("lbImage");
+    const lbCaption = document.getElementById("lbCaption");
+    const lbCounter = document.getElementById("lbCounter");
+    let current = 0;
+    let lastFocused = null;
 
-    document.querySelectorAll(".next").forEach((btn, index) => {
-        btn.addEventListener("click", () => manualSlideGallery(`slide-${index + 1}`, 1));
-    });
+    function show(index) {
+        // Wrap around so the arrows never dead-end
+        current = (index + shots.length) % shots.length;
+        const shot = shots[current];
+        lbImage.src = shot.getAttribute("href");
+        lbImage.alt = shot.dataset.caption || "";
+        lbCaption.textContent = shot.dataset.caption || "";
+        lbCounter.textContent = (current + 1) + " / " + shots.length;
+    }
 
-    // Auto Fade Gallery
-    function startAutoFade(galleryIndex) {
-        let slides = document.querySelectorAll(`.fade-${galleryIndex}`);
-        let currentIndex = 0;
+    function openLightbox(index) {
+        lastFocused = document.activeElement;
+        show(index);
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden"; // Stop the page scrolling behind
+        document.getElementById("lbClose").focus();
+        // Add a history entry so the phone's back button closes the photo
+        // and returns to the gallery, instead of leaving the site.
+        history.pushState({ lightbox: true }, "");
+    }
 
-        function fadeSlides() {
-            slides.forEach(slide => slide.classList.remove("active"));
-            slides[currentIndex].classList.add("active");
-            currentIndex = (currentIndex + 1) % slides.length;
+    function closeLightbox(fromBackButton) {
+        if (!lightbox.classList.contains("open")) {
+            return;
         }
-
-        fadeSlides();
-        return setInterval(fadeSlides, 3000);
+        lightbox.classList.remove("open");
+        lbImage.src = "";
+        document.body.style.overflow = "";
+        if (lastFocused) {
+            lastFocused.focus();
+        }
+        // If we closed via a button, rewind the history entry we added, so the
+        // back button doesn't have to be pressed twice to leave the gallery.
+        if (!fromBackButton && history.state && history.state.lightbox) {
+            history.back();
+        }
     }
 
-    let fadeIntervals = {};
-    
-    document.querySelectorAll(".auto-controls button").forEach((btn, index) => {
-        btn.addEventListener("click", function () {
-            let galleryIndex = index + 1;
-            if (this.innerText === "Play") {
-                fadeIntervals[galleryIndex] = startAutoFade(galleryIndex);
-                this.innerText = "Pause";
-            } else {
-                clearInterval(fadeIntervals[galleryIndex]);
-                this.innerText = "Play";
-            }
+    window.addEventListener("popstate", function () {
+        closeLightbox(true);
+    });
+
+    shots.forEach(function (shot, index) {
+        shot.addEventListener("click", function (event) {
+            event.preventDefault(); // Without JS this link opens the photo directly
+            openLightbox(index);
         });
     });
+
+    document.getElementById("lbClose").addEventListener("click", function () {
+        closeLightbox(false);
+    });
+    document.getElementById("lbPrev").addEventListener("click", function () {
+        show(current - 1);
+    });
+    document.getElementById("lbNext").addEventListener("click", function () {
+        show(current + 1);
+    });
+
+    // Clicking the dark backdrop closes, clicking the photo itself does not
+    lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+            closeLightbox(false);
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("open")) {
+            return;
+        }
+        if (event.key === "Escape") {
+            closeLightbox(false);
+        } else if (event.key === "ArrowLeft") {
+            show(current - 1);
+        } else if (event.key === "ArrowRight") {
+            show(current + 1);
+        }
+    });
+
+    // Swipe left and right on a phone
+    let touchStartX = null;
+    lightbox.addEventListener("touchstart", function (event) {
+        touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", function (event) {
+        if (touchStartX === null) {
+            return;
+        }
+        const distance = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(distance) > 50) {
+            show(distance < 0 ? current + 1 : current - 1);
+        }
+        touchStartX = null;
+    }, { passive: true });
 });
