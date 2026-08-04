@@ -10,10 +10,14 @@ function myFunction() {
   
         // Auto-Transitioning Gallery Logic
         let index = 0;
+        const slideshow = document.getElementById("slideshow");
         function slideShow() {
-            const slideshow = document.getElementById("slideshow");
             index = (index + 1) % 2; // Alternates between 0 and 1
             slideshow.style.transform = `translateX(-${index * 100}%)`;
         }
-        setInterval(slideShow, 7000); // Changes every 7 seconds
+        /* Only start the timer on pages that actually have a slideshow.
+           Without this it errors every 7 seconds on the pages that don't. */
+        if (slideshow) {
+            setInterval(slideShow, 7000); // Changes every 7 seconds
+        }
     
