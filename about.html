@@ -8,7 +8,6 @@
       <meta name="author" content="Sunshine Hughes">
       <meta name="description" content="A grown up account of being a teenage mother. A declaration of family love through writings, pictures, & video.">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" type="image/png" href="favicon-512.png" sizes="512x512">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -16,27 +15,31 @@
     </head>
 
     <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
       <header>
         <h1>Seasons of the Sun</h1> 
       </header>
 
-            <div class="topnav" id="myTopnav">
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i></a>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="childhood.html">Childhood</a></li>
-            <li><a href="motherhood.html">Motherhood</a></li>
-            <li><a href="youngparenthood.html">Young Parenthood</a></li>
-            <li><a href="youngadulthood.html">Young Adulthood</a></li>
-            <li><a href="adulting.html">Adulting</a></li>
-            <li><a href="futuremama.html">Future Mama</a></li>
-            <li><a href="photo.html">Photos</a></li>
-          </ul>   
-      </div>
-
-<main>
+  <nav class="topnav" id="myTopnav" aria-label="Main">
+    <button type="button" class="icon" id="navToggle"
+            aria-expanded="false" aria-controls="navMenu">
+      <span class="hamburger" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="childhood.html">Childhood</a></li>
+        <li><a href="motherhood.html">Motherhood</a></li>
+        <li><a href="youngparenthood.html">Young Parenthood</a></li>
+        <li><a href="youngadulthood.html">Young Adulthood</a></li>
+        <li><a href="adulting.html">Adulting</a></li>
+        <li><a href="futuremama.html">Future Mama</a></li>
+        <li><a href="photo.html">Photos</a></li>
+    </ul>
+  </nav>
+<main id="main" tabindex="-1">
   <div class="content-container">
     <div class="content">
          <h2>It Starts</h2>

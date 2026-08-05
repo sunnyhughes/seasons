@@ -55,6 +55,81 @@ header h1  {
 
 .topnav .icon {
   display: none;
+  /* Reset the button back to looking like the plain icon it replaced */
+  background: none;
+  border: 0;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* The three bars, drawn in CSS. This used to be a Font Awesome glyph, which
+   cost an entire icon font download on every page for one symbol. */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: currentColor;
+  border-radius: 2px;
+}
+
+.hamburger {
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
+
+/* Sits off-screen until it receives keyboard focus, then drops into view as
+   the first stop on the page. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  padding: 0.6rem 1rem;
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Available to screen readers, invisible on screen */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The skip link targets <main tabindex="-1">; without this it would draw a
+   focus ring around the entire page body when jumped to. */
+main:focus {
+  outline: none;
 }
 
 main {
@@ -233,10 +308,9 @@ footer small {
       gap: 1rem;
     }
 
-    .topnav a.icon {
+    .topnav .icon {
       display: block;
       float: right;
-      
     }
   
     .topnav.responsive ul {
