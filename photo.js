@@ -116,8 +116,34 @@ document.addEventListener("DOMContentLoaded", function () {
             show(current - 1);
         } else if (event.key === "ArrowRight") {
             show(current + 1);
+        } else if (event.key === "Tab") {
+            trapFocus(event);
         }
     });
+
+    // aria-modal tells a screen reader to ignore the page behind the viewer,
+    // but it does nothing for the Tab key: without this, tabbing walks out of
+    // the lightbox and onto the gallery links hidden behind it.
+    function trapFocus(event) {
+        const stops = [
+            document.getElementById("lbClose"),
+            document.getElementById("lbPrev"),
+            document.getElementById("lbNext"),
+        ];
+        const first = stops[0];
+        const last = stops[stops.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        } else if (stops.indexOf(document.activeElement) === -1) {
+            // Focus escaped some other way; pull it back in
+            event.preventDefault();
+            first.focus();
+        }
+    }
 
     // Swipe left and right on a phone
     let touchStartX = null;

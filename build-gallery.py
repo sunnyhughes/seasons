@@ -108,8 +108,11 @@ def build_markup(manifest):
 
         figures.append(
             f'        <a class="shot" href="{full}" data-caption="{caption}" data-index="{index}">\n'
+            # alt is empty on purpose: the caption below sits inside the same
+            # link, so repeating it here makes a screen reader read every
+            # photo's description twice.
             f'          <img src="{thumb}" width="{width}" height="{height}" '
-            f'loading="lazy" decoding="async" alt="{caption}">\n'
+            f'loading="lazy" decoding="async" alt="">\n'
             f'          <span class="shot-caption">{caption}</span>\n'
             f'        </a>'
         )
