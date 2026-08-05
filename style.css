@@ -17,7 +17,9 @@ header {
 }
 
 header h1  {
-    color: rgb(214, 179, 4);
+    /* Was rgb(214,179,4), which came out at 1.53:1 on the pink header and was
+       close to unreadable. Same gold hue, darkened to 4.57:1. */
+    color: #746102;
     margin: 0;
     font-size: 2rem;
 }
@@ -49,8 +51,19 @@ header h1  {
     color: #333 ;
 }
 
-.topnav ul li a:hover {
-      color: rgb(187, 133, 133);
+.topnav ul li a:hover,
+.topnav ul li a:focus-visible {
+      /* Was rgb(187,133,133) at 2.36:1 on the blue bar; same rose, now 4.50:1 */
+      color: #935252;
+}
+
+/* Every interactive control gets the same visible focus ring. Browsers vary a
+   lot in how obvious their default is, especially over coloured backgrounds. */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #7a3b6b;
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 .topnav .icon {
@@ -279,8 +292,9 @@ p {
 }
 
 footer {
-    background-color: #f4d8e2;    
-    color: rgb(180, 152, 13);
+    background-color: #f4d8e2;
+    /* Was rgb(180,152,13) at 2.12:1; matches the header gold now */
+    color: #746102;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
